@@ -7,7 +7,7 @@
       "nginx" : "nginx.hjs"
     },
     "location" : {
-       "pages" : "error-pages-rendered",
+       "pages" : "./",
        "config" : "config-rendered"
       }
   },
