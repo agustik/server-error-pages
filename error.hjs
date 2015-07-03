@@ -126,18 +126,6 @@ function on(events, querySelector, callback){
 
 err.init();
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 </script>
 </body>
 </html>
