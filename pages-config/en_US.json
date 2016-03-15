@@ -8,9 +8,9 @@
     },
     "location" : {
        "pages" : {
-         "html" : "error-pages-rendered/html",
-         "json" : "error-pages-rendered/json",
-         "xml"  : "error-pages-rendered/xml"
+         "html" : "error-pages-rendered/{{lang}}/html",
+         "json" : "error-pages-rendered/{{lang}}/json",
+         "xml"  : "error-pages-rendered/{{lang}}/xml"
        },
        "config" : "config-rendered"
       }
@@ -313,6 +313,33 @@
       "info" : {
         "title" : {
            "text": "A 503 error status implies that this is a temporary condition due to a temporary overloading or maintenance of the server. This error is normally a brief temporary interuption."
+         },
+        "description" : {
+          "visitor" : {
+            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "isup" : false
+          },
+          "owner" : {
+            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+          }
+        }
+      }
+    },
+    {
+      "code" : 504,
+      "title" : "504 Gateway Timeout",
+      "header" : {
+        "text" : "504 Gateway Timeout",
+        "class" : "fa fa-exclamation-triangle orange"
+      },
+      "description" : "The gateway was unable to connect to the backend server",
+      "button" : {
+        "text" : "Try This Page Again",
+        "action" : "reload"
+      },
+      "info" : {
+        "title" : {
+           "text": "A 504 error status implies that the backend server is offline or connection timed out"
          },
         "description" : {
           "visitor" : {

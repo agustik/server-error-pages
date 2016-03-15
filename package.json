@@ -19,5 +19,8 @@
   "devDependencies": {
     "hogan.js": "^3.0.2",
     "colors": "^1.1.2"
+  },
+  "dependencies": {
+    "yargs": "^4.3.1"
   }
 }

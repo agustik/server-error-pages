@@ -3,36 +3,52 @@ var hogan = require("hogan.js");
 
 var fs = require('fs');
 
-var config = require('./pages.json');
+var config = false; //require('./pages.json');
 
 var colors = require('colors');
 
-var template = {};
-var page;
+var argv = require('yargs').argv;
 
-var isWin = /^win/.test(process.platform),
-    separator = (isWin) ? '\\' : '/';
+var template = {};
+
+
+var lang = argv.l || argv.lang || 'en_US';
+
+var config_file = ['./pages-config/', lang, '.json'].join('');
+
+var config = require(config_file);
 
 // load all files into memory
-for (page in config.meta.template){
-  template[page] = fs.readFileSync(config.meta.template[page],  'utf-8');
+for (var page in config.meta.template){
+  template[page] = fs.readFileSync('templates/' + config.meta.template[page],  'utf-8');
 }
 
-var tasks = {
-  init : function (){
 
-  },
+var tasks = {
   error : function (){
-    WriteErrorTemplates(template.error, config.pages, config.meta.location.pages.html + '/' );
-  },
-  index : function (){
-    RenderAndWrite(template.index, config.meta.location.pages.html + "/index.html" , config);
+    var location = config.meta.location.pages.html;
+    location = hogan.compile(location).render({lang : lang});
+
+    var path = location.split('/');
+    path.pop();
+
+    softmkdir(path.join('/'));
+
+    WriteErrorTemplates(template.error, config.pages, location + '/' );
   },
   nginx : function (){
     RenderAndWrite(template.nginx, config.meta.location.config + "/nginx-error.conf" , ParseNginxConfig(config) );
   },
   json : function (){
-    WriteJson(config, config.meta.location.pages.json);
+    var location = config.meta.location.pages.json;
+    location = hogan.compile(location).render({lang : lang});
+
+    var path = location.split('/');
+    path.pop();
+
+    softmkdir(path.join('/'));
+
+    WriteJson(config, location);
   },
   all : function (){
     for (var e in this){
@@ -44,19 +60,23 @@ var tasks = {
   }
 };
 
-var cmd = process.argv[2];
-
-if(cmd in tasks){
-  var str = "Running task: " + cmd;
-  console.log("Running task: ".green, cmd.grey);
-  tasks[cmd]();
-}else{
-  console.error('Not available function'.red);
-  console.log("available are : ");
-  for (var e in tasks){
-    console.log("\t", e.green);
-  }
+if (argv.nginx || argv.n){
+  tasks.nginx();
 }
+if (argv.json || argv.j){
+  tasks.json();
+}
+
+if (argv.error || argv.e){
+  tasks.error();
+}
+config.meta.location.pages.html
+if (argv.all || argv.a){
+  tasks.all();
+}
+
+
+
 function ParseNginxConfig (config){
   var NGINX_CODES = [];
   config.pages.forEach(function (page){
@@ -99,12 +119,24 @@ function WriteErrorTemplates(template, json, location){
 function WriteJson(config, location){
   softmkdir(location);
   var name, filename;
-  config.pages.forEach(function (obj){
-    var json = {
-      code : obj.code,
-      message : obj.description,
-      info : obj.info.title.text
+
+  var lua = config.config.nginx.lua || false;
+
+  var json = {};
+
+  if (lua){
+    json.meta = {
+      uuid : '_uuid_',
+      cid : '_cid_'
     };
+  }
+
+  config.pages.forEach(function (obj){
+    json.code = obj.code;
+    json.message = obj.description;
+    json.info = obj.info.title.text;
+
+
     if(isNumber(obj.code)){
       name = obj.code + '-error.json';;
     }else{
