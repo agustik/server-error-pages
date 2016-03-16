@@ -11,6 +11,14 @@ var argv = require('yargs').argv;
 
 var template = {};
 
+var webshot = require('webshot');
+
+var webshot_opts = {
+  siteType : 'html',
+  phantomPath: require('phantomjs2').path,
+  renderDelay : 100
+};
+
 
 var lang = argv.l || argv.lang || 'en_US';
 
@@ -50,6 +58,20 @@ var tasks = {
 
     WriteJson(config, location);
   },
+  image : function (){
+
+    var location = config.meta.location.pages.image;
+    location = hogan.compile(location).render({lang : lang});
+
+    var path = location.split('/');
+    path.pop();
+
+    softmkdir(path.join('/'));
+
+
+    WriteImageTemplates(template.image, config.pages, location )
+
+  },
   all : function (){
     for (var e in this){
       if(e !== "all" && e !== "init"){
@@ -70,10 +92,14 @@ if (argv.json || argv.j){
 if (argv.error || argv.e){
   tasks.error();
 }
-config.meta.location.pages.html
 if (argv.all || argv.a){
   tasks.all();
 }
+
+if (argv.image || argv.i){
+  tasks.image();
+}
+
 
 
 
@@ -100,6 +126,37 @@ function folderExist(filePath){
         return false;
     }
   return false;
+}
+
+function WriteImageTemplates(template, array, location){
+
+  array.forEach(function (value, key){
+    var name, html = hogan
+          .compile(template)
+          .render(value);
+
+      if(isNumber(value.code)){
+        name = value.code + "-error.png";
+      }else{
+        name = value.code + ".png";
+      }
+
+      var ImageLocation = location + '/' +name;
+
+      console.log(ImageLocation);
+
+      webshot(html, ImageLocation, webshot_opts, function(err) {
+        if (err){
+            return console.log('ERROR', err);
+        }
+        console.log('SUCCESS', ImageLocation)
+
+      });
+
+  })
+  // webshot(html, 'image.png', webshot_opts, function(err, o) {
+  //   console.log('Created image.png', err, o)
+  // });
 }
 function WriteErrorTemplates(template, json, location){
   softmkdir(location);

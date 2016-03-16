@@ -1,0 +1,22 @@
+{
+  "name": "server-error-pages",
+  "description": "Smart error pages for server, template engine",
+  "main": "render.js",
+  "authors": [
+    "Ágúst Ingi Kjartansson <agust.ingi.kjartansson@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/agustik/server-error-pages",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0"
+  }
+}

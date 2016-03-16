@@ -4,3 +4,4 @@ node_modules/
 data/
 .vagrant/
 error-pages-rendered/*
+bower_components

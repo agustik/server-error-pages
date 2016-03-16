@@ -4,13 +4,15 @@
     "template" : {
       "index" : "index.hjs",
       "error" : "error.hjs",
-      "nginx" : "nginx.hjs"
+      "nginx" : "nginx.hjs",
+      "image" : "image.hjs"
     },
     "location" : {
        "pages" : {
          "html" : "error-pages-rendered/{{lang}}/html",
          "json" : "error-pages-rendered/{{lang}}/json",
-         "xml"  : "error-pages-rendered/{{lang}}/xml"
+         "xml"  : "error-pages-rendered/{{lang}}/xml",
+         "image": "error-pages-rendered/{{lang}}/image"
        },
        "config" : "config-rendered"
       }
@@ -30,25 +32,29 @@
       "code" : 403,
       "title" : "403 Forbidden",
       "header" : {
-        "text" : "403 Forbidden",
+        "text" : "403 óviðkomandi bannaður aðgangur",
         "class" : "fa fa-ban red"
       },
-      "description" : "Sorry! You don't have access permissions for that on ",
+      "description" : "Því miður, þú hefur ekki aðgang að þessu vefsvæði",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" : ""
       },
       "info" : {
         "title" : {
-           "text": "A 403 error status indicates that you don't have permission to access the file or page. In general, web servers and websites have directories and files that are not open to the public web for security reasons."
+           "title": "Hvað gerðist?",
+           "text": "403 villa bendir til þess að þú hefur ekki aðgang að þessari síðu eða skrá sem þú ert að reyna að nálgast. Vefþjónar eru oft með möppur sem eru ekki aðgengilega öllum."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka og athugaðu hvort þú ert á réttum stað, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
@@ -57,25 +63,29 @@
       "code" : 404,
       "title" : "404 Not Found",
       "header" : {
-        "text" : "404 Not Found",
+        "text" : "404 Fannst ekki",
         "class" : "fa fa-search red"
       },
-      "description" : "We couldn't find what you're looking for on ",
+      "description" : "Við fundum ekki það sem þú leitar að ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" : ""
       },
       "info" : {
         "title" : {
-           "text": "A 404 error status implies that the file or page that you're looking for could not be found."
+           "title": "Hvað gerðist?",
+           "text": "404 villa bendir til að síðan eða skráin sem þú varst að leita að fannst ekki á vefþjóni."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka og athugaðu hvort þú ert á réttum stað, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
@@ -84,53 +94,61 @@
       "code" : 405,
       "title" : "405 Method Not Allowed",
       "header" : {
-        "text" : "405 Method Not Allowed",
+        "text" : "405 Aðgerð ekki leyfileg",
         "class" : "fa fa-ban red"
       },
-      "description" : "Sorry! You don't have access permissions for that on ",
+      "description" : "Afsakaðu! Þú hefur ekki heimild til að gera þetta ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" : ""
       },
       "info" : {
         "title" : {
-           "text": "A request was made of a resource using a request method not supported by that resource; for example, using GET on a form which requires data to be presented via POST, or using using AJAX call on blocked AJAX."
+           "title": "Hvað gerðist?",
+           "text": "Aðgerðin sem þú reyndir er ekki studd af vefþjóni. T.d. varstu að prófa að senda POST á endapúnkt sem styður bara GET"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka og athugaðu hvort þú ert á réttum stað, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
     },
     {
       "code" : 429,
-      "title" : "Slow Down",
+      "title" : "429 Too Many Requests",
       "header" : {
-        "text" : "Slow Down",
+        "text" : "Hægðu á þér félagi",
         "class" : "fa fa-dashboard red",
-        "description" : "Rate Limit Exceeded."
+        "description" : "Of margar tengingar á of stuttum tíma"
       },
-      "description" : "Sorry! You don't have access permissions for that on ",
+      "description" : "Þú ert að tengjast okkur of oft, það er ekki leyfilegt",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "This error means you have exceeded the request rate limit for the the web server you are accessing. Rate Limit Thersholds are set higher than a human browsing this site should be able to reach and mostly for protection against automated requests and attacks."
+           "title": "Hvað gerðist?",
+           "text": "Þú ert að tengjast hraðar en venjulegur notandi myndi tengjast. Hámark tenginga er til þess að vernda vefþjón frá árásum"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "The best thing to do is to slow down with your requests and try again in a few minutes. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Eina sem þú getur gert er að slaka aðeins á og prófa aftur síðar, afsakaðu óþægindin",
             "isup" : false
           },
           "owner" : {
-            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian. If the error persists, contact your website host."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Vanalega er þetta í stutta stund, ef þetta heldur áfram þá geturu verið í bandi við hýsingaraðila."
           }
         }
       }
@@ -141,24 +159,28 @@
       "header" : {
         "text" : "494 Request Header Too Large",
         "class" : "fa fa-file red",
-        "description" : "Rate Limit Exceeded."
+        "description" : ""
       },
-      "description" : "Your browser sent to large headers for ",
+      "description" : "Vefvafrinn þinn sendi of stóran 'haus' með þessari tengingu ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" :  ""
       },
       "info" : {
         "title" : {
-           "text": "A 494 error status indicates that the browser sent to large headers."
+           "title": "Hvað gerðist?",
+           "text": "494 villa bendir til þess að 'haus' tengingar var of stór"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka eða hreinsa vafrann þinn af vafrakökum og skyndiminni, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
@@ -167,25 +189,29 @@
       "code" : 495,
       "title" : "495 Certificate Error",
       "header" : {
-        "text" : "495 Certificate Error",
+        "text" : "495 Villa með skírteini",
         "class" : "fa fa-code red"
       },
-      "description" : "There is a issue with the client/server SSL/TLS client certificate config for ",
+      "description" : "Það kom upp villa með TLS/SSL skírteini sem þú sendir þjóninum fyrir ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" :  ""
       },
       "info" : {
         "title" : {
-           "text": "A 495 error status indicates that there was a SSL/TLS certificate error. Your browser or the server is not properly configured for certificate authentication."
+           "title": "Hvað gerðist?",
+           "text": "495 villa bendir til þess að vafrinn þinn er ekki rétt stilltur fyrir TLS/SSL auðkenningu"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka og athugaðu hvort þú ert á réttum stað, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
@@ -194,25 +220,29 @@
       "code" : 496,
       "title" : "496 Certificate not sent",
       "header" : {
-        "text" : "496 Certificate not sent",
+        "text" : "496 Skírteini ekki sent",
         "class" : "fa fa-exchange red"
       },
-      "description" : "Server is returning error because your browsers did not send a client certificate for ",
+      "description" : "Vefþjónn sendir þessa villu þar sem vafrinn þinn sendi ekki skírteini fyrir ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" :  ""
       },
       "info" : {
         "title" : {
-           "text": "A 496 error status indicates that there no client certificate sent for authentication."
+           "title": "Hvað gerðist?",
+           "text": "496 villa bendir til þess að ekkert skírteini var sent til auðkenningar"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Please use your browsers back button and check that you're in the right place. If you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Prófaðu að fara til baka og athugaðu hvort þú ert á réttum stað, ef þig vantar aðstoð sendu okkur þá tölvupóst.",
             "isup" : false
           },
           "owner" : {
-            "text" : "Please check that you're in the right place and get in touch with your website provider if you believe this to be an error."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Athugaðu hvort þú sért á réttum stað, eða vertu í bandi við hýsingaraðila ef þú heldur að þetta sé bilun."
           }
         }
       }
@@ -221,25 +251,29 @@
       "code" : 500,
       "title" : "500 Internal Server Error",
       "header" : {
-        "text" : "500 Internal Server Error",
+        "text" : "500 bilun í vefþjóni",
         "class" : "glyphicon glyphicon-fire red"
       },
-      "description" : "The web server is returning an internal error for ",
+      "description" : "Vefþjónn skilar villu sem þú varst að gera á ",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "A 500 error status implies there is a problem with the web server's software causing it to malfunction."
+           "title": "Hvað gerðist?",
+           "text": "500 villa bendir til þess að hugbúnaður á vefþjóni sé bilaður"
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Nothing you can do at the moment. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ekkert sem þú getur gert í þessu eins og er, en þú getur sent okkur tölvupóst og látið vita",
             "isup" : false
           },
           "owner" : {
-            "text" : "This error can only be fixed by server admins, please contact your website provider."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Þessa villu þarf tæknimaður að skoða."
           }
         }
       }
@@ -248,25 +282,29 @@
       "code" : 501,
       "title" : "501 Not Implemented",
       "header" : {
-        "text" : "501 Not Implemented",
+        "text" : "501 Aðgerð ekki til",
         "class" : "glyphicon glyphicon-fire red"
       },
-      "description" : "The does not support this operation for ",
+      "description" : "Þessi aðgerð er ekki til fyrir ",
       "button" : {
-        "text" : "Take Me To The Homepage",
+        "text" : "Sendu mig á heimasíðuna",
         "action" : ""
       },
       "info" : {
         "title" : {
-           "text": "A 501 error status implies that you where doing somthing that is not supported by the webserver."
+           "title": "Hvað gerðist?",
+           "text": "501 villa bendir til þess að þú reyndir aðgerð sem vefþjónn styður ekki."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Nothing you can do at the moment. If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ekkert sem þú getur gert í þessu eins og er, en þú getur sent okkur tölvupóst og látið vita",
             "isup" : false
           },
           "owner" : {
-            "text" : "This error can only be fixed by server admins, please contact your website provider."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Þessa villu þarf tæknimaður að skoða."
           }
         }
       }
@@ -278,22 +316,26 @@
         "text" : "502 Bad Gateway",
         "class" : "fa fa-bolt orange"
       },
-      "description" : "The web server is returning an unexpected networking error for ",
+      "description" : "Vefhraðall nær ekki að tengjast við bakenda vefþjón vegna netvandamála fyrir ",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "A 502 error status implies that that the server received an invalid response from an upstream server it accessed to fulfil the request."
+           "title": "Hvað gerðist?",
+           "text": "502 villa segir til um að vefþjónn sendi ófullnægjandi svar til baka."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "Also, clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please send us an email instead.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ef þú lendir aftur í þessu, prófaðu þá að hreinsa vafrakökur (e.cookies) og skyndiminni (e.cache) og prófaðu aftur.",
             "isup" : true
           },
           "owner" : {
-            "text" : "Clearing your browser cache and refreshing the page may clear this issue. If the problem persissts and you need immediate assistance, please contact your website provider."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Þú ættir að skoða hugbúnaðinn sem keyrir á þjóninum þínum, kannski er vandamálið skyndiminni í vafranum þínum eða vafrakökur"
           }
         }
       }
@@ -305,22 +347,26 @@
         "text" : "503 Service Unavailable",
         "class" : "fa fa-exclamation-triangle orange"
       },
-      "description" : "The web server is returning an unexpected temporary error for ",
+      "description" : "Vefþjóninn er að svara með tímabundinni bilun fyrir ",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "A 503 error status implies that this is a temporary condition due to a temporary overloading or maintenance of the server. This error is normally a brief temporary interuption."
+           "title": "Hvað gerðist?",
+           "text": "503 villa bendir til þess að tímabundin bilun hafi komið upp á vefþjóni, prófaðu aftur innan skams."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ef þig vantar aðstoð, sendu okkur þá póst. Annars prófau aftur eftir nokkrar mínútur",
             "isup" : false
           },
           "owner" : {
-            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Þessi villa verður sennilega aðeins í nokkrar mínútur, þú ættir að prófa aftur."
           }
         }
       }
@@ -332,22 +378,26 @@
         "text" : "504 Gateway Timeout",
         "class" : "fa fa-exclamation-triangle orange"
       },
-      "description" : "The gateway was unable to connect to the backend server",
+      "description" : "Gátt á í vandræðum með að tengjast bakenda vefþjóni fyrir ",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "A 504 error status implies that the backend server is offline or connection timed out"
+           "title": "Hvað gerðist?",
+           "text": "Bakenda vefþjónusta er sennilega ekki í gangi."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ef þig vantar aðstoð þá geturu prófað að senda okkur póst, annars ættiru að prófa aftur fljótlega.",
             "isup" : false
           },
           "owner" : {
-            "text" : "This error is mostly likely very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Þú ættir að kikja á vefþjóninn þinn og sjá hvort allt sé ekki örugglega í lagi."
           }
         }
       }
@@ -356,25 +406,29 @@
       "code" : "maintenance",
       "title" : "Temporary Maintenance",
       "header" : {
-        "text" : "Temporary Maintenance",
+        "text" : "Tímabundið viðhald",
         "class" : "fa fa-cogs green"
       },
-      "description" : "We are currently doing maintenance for ",
+      "description" : "Við erum að vinna í viðhaldi á ",
       "button" : {
-        "text" : "Try This Page Again",
+        "text" : "Endurhlaða síðuna",
         "action" : "reload"
       },
       "info" : {
         "title" : {
-           "text": "Servers and websites need regular maintnance just like a car to keep them up and running smoothly."
+           "title": "Hvað gerðist?",
+           "text": "Stundum er þörf á að taka niður vefþjóna til þess að sinna viðhaldi."
          },
         "description" : {
+          "title" : "Hvað get ég gert?",
           "visitor" : {
-            "text" : "If you need immediate assistance, please send us an email instead. We apologize for any inconvenience.",
+            "title" : "Ef þú ert gestur",
+            "text" : "Ef þig vantar aðstoð, sendu okkur þá línu",
             "isup" : false
           },
           "owner" : {
-            "text" : "The maintenance period will mostly likely be very brief, the best thing to do is to check back in a few minutes and everything will probably be working normal agian."
+            "title": "Ef þú ert eigandi síðunar",
+            "text" : "Viðhaldið ætti að taka stuttan tíma, það besta sem þú getur gert er að prófa aftur eða hafa samband við hýsingaraðila."
           }
         }
       }
